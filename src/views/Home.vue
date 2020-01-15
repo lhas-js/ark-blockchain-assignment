@@ -5,7 +5,7 @@
       <div class="container mx-auto">
         <img
           class="illustration mx-auto mb-4"
-          src="../../assets/home-illustration.jpg"
+          src="../assets/home-illustration.jpg"
         />
         <h2 class="text-gray-800 text-5xl font-extrabold">
           ARK Paper Wallet
@@ -21,8 +21,8 @@
 </template>
 
 <script>
-import Navbar from "../core/Navbar";
-import { PrimaryButton, FlatButton } from "../core/buttons";
+import Navbar from "../components/Navbar";
+import { PrimaryButton, FlatButton } from "../components/buttons";
 export default {
   components: { Navbar, PrimaryButton, FlatButton }
 };

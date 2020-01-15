@@ -1,4 +1,4 @@
-# ark-blockchain-assignment
+# ark
 
 ## Project setup
 ```

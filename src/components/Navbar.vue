@@ -1,7 +1,7 @@
 <template>
   <nav class="flex items-center justify-center flex-wrap bg-red-600 p-5">
     <div class="flex items-center flex-shrink-0 text-white mr-6">
-      <img class="logo" src="./../../assets/ark-logo.svg" />
+      <img class="logo" src="../assets/ark-logo.svg" />
       <span class="font-semibold text-xl tracking-tight pl-2">
         Paper Wallet</span
       >
