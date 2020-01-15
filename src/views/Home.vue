@@ -14,8 +14,12 @@
           Welcome to the ARK ecossystem. You can start generating a new wallet
           or exploring existing wallets
         </p>
-        <PrimaryButton class="mt-4">Generate a new wallet</PrimaryButton>
-        <FlatButton class="mt-4 ml-3">Explore a wallet</FlatButton>
+        <PrimaryButton to="/generate" class="mt-4"
+          >Generate a new wallet</PrimaryButton
+        >
+        <FlatButton to="/explore" class="mt-4 ml-3"
+          >Explore a wallet</FlatButton
+        >
       </div>
     </div>
   </main>

@@ -1,0 +1,15 @@
+.primary-button {
+  @apply .inline-block .text-lg .text-white .bg-red-500 .p-3 .rounded;
+}
+
+.primary-button:hover {
+  @apply .bg-red-600;
+}
+
+.flat-button {
+  @apply .inline-block .text-lg .text-gray-500 .p-3 .rounded;
+}
+
+.flat-button:hover {
+  @apply .bg-gray-200;
+}

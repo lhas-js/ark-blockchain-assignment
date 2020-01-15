@@ -1,13 +1,20 @@
 <template>
-  <button
-    class="text-lg p-3 text-gray-500 rounded hover:bg-gray-200 hover:text-gray-600"
-  >
+  <button class="flat-button" v-if="component === 'button'">
     <slot></slot>
   </button>
+  <router-link class="flat-button" v-else :to="to"><slot></slot></router-link>
 </template>
 
 <script>
-export default {};
+export default {
+  props: {
+    component: {
+      type: String,
+      default: "link"
+    },
+    to: {
+      type: String
+    }
+  }
+};
 </script>
-
-<style></style>
