@@ -8,7 +8,7 @@ import bs58check from "bs58check";
 import { config } from "../config";
 import { IWallet } from "../interfaces";
 
-const getAddress = (publicKey: string): string => {
+export const getAddress = (publicKey: string): string => {
   const buffer = Buffer.from(
     new RIPEMD160().update(Buffer.from(publicKey, "hex")).digest("hex"),
     "hex"

@@ -12,6 +12,7 @@
     "bs58check": "^2.1.2",
     "buffer": "^5.4.3",
     "core-js": "^3.4.4",
+    "lodash": "^4.17.15",
     "more-entropy": "^0.0.7",
     "ripemd160": "^2.0.2",
     "secp256k1": "^4.0.0",
@@ -24,6 +25,7 @@
     "wif": "^2.0.6"
   },
   "devDependencies": {
+    "@types/lodash": "^4.14.149",
     "@vue/cli-plugin-babel": "^4.1.0",
     "@vue/cli-plugin-eslint": "^4.1.0",
     "@vue/cli-plugin-router": "^4.1.0",
