@@ -1,0 +1,3 @@
+.text-field {
+  @apply .bg-gray-100 .border .rounded .p-2;
+}

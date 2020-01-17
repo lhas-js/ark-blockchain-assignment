@@ -1,15 +1,22 @@
 import { Generator } from "more-entropy";
 import { randomBytes } from "crypto";
+import { walletFromEntropy } from "./CryptoService";
 
 class WalletService {
   generate = (onSuccess: any) => {
-    console.log("ae");
     new Generator().generate(2048, (values: any) => {
-      console.log("values", values);
-      onSuccess();
-      // this.entropy = values.concat(Array.from(randomBytes(256)));
-      // this.generateWallet();
+      const entropy = values.concat(Array.from(randomBytes(256)));
+      const wallet = walletFromEntropy(this.shuffle(entropy).slice(0, 16));
+      onSuccess(wallet);
     });
+  };
+
+  shuffle = (items: number[]) => {
+    for (let i = items.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [items[i], items[j]] = [items[j], items[i]];
+    }
+    return items;
   };
 }
 

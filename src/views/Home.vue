@@ -12,7 +12,7 @@
         </h2>
         <p class="text-gray-800 text-md mt-2">
           Welcome to the ARK ecossystem. You can start generating a new wallet
-          or exploring existing wallets
+          or exploring existing wallets.
         </p>
         <PrimaryButton to="/generate" class="mt-4"
           >Generate a new wallet</PrimaryButton
