@@ -43,9 +43,6 @@ export const walletFromBIP39 = (passphrase: string) => {
     entropy: ""
   };
 
-  console.log("publicKey", publicKey);
-  console.log("publicKey", getAddress(publicKey));
-
   try {
     wallet.entropy = mnemonicToEntropy(passphrase);
   } catch (error) {

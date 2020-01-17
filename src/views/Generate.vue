@@ -1,24 +1,12 @@
 <template>
-  <main class="flex flex-col h-screen">
+  <main class="flex flex-col h-screen text-gray-600">
     <Navbar />
     <div class="flex items-center flex-1 text-center">
-      <!-- <div v-if="isLoading" class="container mx-auto">
+      <div v-if="isLoading" class="container mx-auto">
         <h2 class="text-gray-800 text-4xl font-extrabold">Generating wallet</h2>
         <Loader />
       </div>
       <div v-else class="container mx-auto">
-        <h2 class="text-gray-800 text-xl font-extrabold">Address</h2>
-        <p class="text-gray-800 text-md mt-2">{{ this.metadata.address }}</p>
-        <h2 class="text-gray-800 text-xl font-extrabold">Passphrase</h2>
-        <p class="text-gray-800 text-md mt-2">{{ this.metadata.passphrase }}</p>
-        <h2 class="text-gray-800 text-xl font-extrabold">Entropy</h2>
-        <p class="text-gray-800 text-md mt-2">{{ this.metadata.entropy }}</p>
-        <h2 class="text-gray-800 text-xl font-extrabold">Public Key</h2>
-        <p class="text-gray-800 text-md mt-2">{{ this.metadata.publicKey }}</p>
-        <h2 class="text-gray-800 text-xl font-extrabold">WIF</h2>
-        <p class="text-gray-800 text-md mt-2">{{ this.metadata.wif }}</p>
-      </div>-->
-      <div class="container mx-auto">
         <h2 class="text-gray-800 text-3xl mt-4 mb-4 font-extrabold">Wallet generated 👏</h2>
         <div
           class="text-left max-w-4xl mx-auto mb-4 p-6 bg-white rounded-lg shadow-xl overflow-hidden"
@@ -38,14 +26,15 @@
           </div>
 
           <h2 class="text-gray-800 text-sm font-semibold mt-2">Entropy</h2>
-          <p class="text-gray-800 text-sm">{{ this.metadata.entropy }}</p>
+          <p class="text-sm">{{ this.metadata.entropy }}</p>
           <hr class="mt-2 mb-2" />
           <h2 class="text-gray-800 text-sm font-semibold mt-2">Public Key</h2>
-          <p class="text-gray-800 text-sm">{{ this.metadata.publicKey }}</p>
+          <p class="text-sm">{{ this.metadata.publicKey }}</p>
           <hr class="mt-2 mb-2" />
           <h2 class="text-gray-800 text-sm font-semibold mt-2">WIF</h2>
-          <p class="text-gray-800 text-sm">{{ this.metadata.wif }}</p>
+          <p class="text-sm">{{ this.metadata.wif }}</p>
         </div>
+        <router-link class="text-gray-500 mt-4 rounded inline-block p-2 mb-6" to="/">Back to Home</router-link>
       </div>
     </div>
   </main>
@@ -59,7 +48,7 @@ import WalletService from "../services/WalletService";
 import { IWallet } from "@/interfaces";
 
 export default Vue.extend({
-  components: { Navbar },
+  components: { Navbar, Loader },
   mounted() {
     const onSuccess = (wallet: IWallet) => {
       this.isLoading = false;
