@@ -71,9 +71,3 @@ export default Vue.extend({
   })
 });
 </script>
-
-<style>
-.illustration {
-  height: 320px;
-}
-</style>
