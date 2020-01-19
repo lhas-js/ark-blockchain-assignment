@@ -3,9 +3,7 @@
     <Navbar />
     <div class="flex items-center flex-1 text-center">
       <div class="container mx-auto">
-        <h2 class="text-gray-800 text-2xl mb-2 font-extrabold">
-          Explore a wallet
-        </h2>
+        <h2 class="text-gray-800 text-2xl mb-2 font-extrabold">Explore a wallet</h2>
         <form
           v-on:submit.prevent="onSubmit"
           class="flex text-center max-w-xl mx-auto mb-4 p-6 bg-white rounded-lg shadow-xl overflow-hidden"
@@ -20,14 +18,9 @@
         <router-link
           class="text-gray-500 mt-4 rounded inline-block p-2 mb-6"
           to="/explore/delegates"
-          >Delegates</router-link
-        >
+        >Delegates</router-link>
         <span>|</span>
-        <router-link
-          class="text-gray-500 mt-4 rounded inline-block p-2 mb-6"
-          to="/"
-          >Back to Home</router-link
-        >
+        <router-link class="text-gray-500 mt-4 rounded inline-block p-2 mb-6" to="/">Back to Home</router-link>
       </div>
     </div>
   </main>
@@ -61,7 +54,7 @@ export default Vue.extend({
         ? getAddress(searchTerm)
         : searchTerm;
 
-      this.$router.push(`/explore/wallets/${wallet}`);
+      this.$router.push(`/explore/wallet/${wallet}`);
     }
   }
 });
