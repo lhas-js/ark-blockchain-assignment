@@ -35,4 +35,15 @@ const readableCrypto = (
     return appendCurrency ? `${normalizedValue} Ѧ` : normalizedValue;
   }
 };
-export { isWalletAddress, isPublicKey, readableCrypto };
+
+const humanize = (value: string) => `${value.substring(0, 10)}...`;
+
+const WELL_CONFIRMED_TRANSACTION = 1000;
+
+export {
+  isWalletAddress,
+  isPublicKey,
+  readableCrypto,
+  humanize,
+  WELL_CONFIRMED_TRANSACTION
+};

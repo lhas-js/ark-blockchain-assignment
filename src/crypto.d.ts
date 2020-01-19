@@ -1,5 +1,4 @@
 declare module "crypto";
-
 declare module "secp256k1";
 declare module "ripemd160";
 declare module "simple-sha256";
