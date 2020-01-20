@@ -11,7 +11,7 @@ class ArkService {
     );
   };
   getDelegates = (page = 1) => {
-    return axios.get(`${server}/delegates/?page=${page}`);
+    return axios.get(`${server}/delegates?page=${page}`);
   };
   getAllDelegates = async () => {
     const request = await this.getDelegates(1);
