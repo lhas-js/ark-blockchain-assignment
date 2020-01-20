@@ -34,3 +34,23 @@ export interface ITransaction {
   type: number;
   version: number;
 }
+
+export interface IDelegate {
+  address: string;
+  blocks: {
+    last: any;
+    produced: number;
+  };
+  forged: {
+    fees: string;
+    rewards: string;
+    total: string;
+  };
+  production: {
+    approval: number;
+  };
+  publicKey: string;
+  rank: number;
+  username: string;
+  votes: string;
+}

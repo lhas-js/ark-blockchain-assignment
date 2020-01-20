@@ -21,85 +21,97 @@
             <h3 class="text-gray-500 font-semibold text-sm">Address</h3>
             <p>{{ $route.params.wallet }}</p>
           </div>
+          <div v-if="delegate" class="my-3">
+            <h3 class="text-gray-500 font-semibold text-sm">Voting for</h3>
+            <p>{{ this.delegate.username }}</p>
+          </div>
           <div class="my-3">
             <h3 class="text-gray-500 font-semibold text-sm">Balance</h3>
             <p>{{ this.readableBalance }}</p>
           </div>
         </section>
 
-        <h2 class="text-gray-800 text-xl my-3 font-extrabold">
-          Recent transactions
-        </h2>
+        <Loader v-if="this.isLoading" />
 
-        <div
-          class="text-gray-500 text-md bg-white rounded-lg shadow-md overflow-x-auto md:overflow-hidden mb-2"
-        >
-          <table class="table-auto w-full">
-            <thead>
-              <tr>
-                <th class="text-gray-400 font-semibold px-4 py-4">ID</th>
-                <th class="text-gray-400 font-semibold px-4 py-4">Timestamp</th>
-                <th class="text-gray-400 font-semibold px-4 py-4">Sender</th>
-                <th class="text-gray-400 font-semibold px-4 py-4">Recipient</th>
-                <th class="text-gray-400 font-semibold px-4 py-4">Amount</th>
-                <th class="text-gray-400 font-semibold px-4 py-4">Fee</th>
-                <th class="text-gray-400 font-semibold px-4 py-4">
-                  Confirmations
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr
-                v-bind:key="transaction.id"
-                v-for="transaction in formattedTransactions"
-              >
-                <td class="border px-4 py-2">
-                  <a
-                    class="text-blue-500 underline"
-                    :href="
-                      `https://explorer.ark.io/transaction/${transaction.id}`
-                    "
-                    :title="transaction.id"
-                    target="_blank"
-                    >{{ transaction.humanizedId }}</a
-                  >
-                </td>
-                <td class="border px-4 py-2">
-                  <timeago
-                    :title="transaction.timestamp.human"
-                    :datetime="transaction.humanizedTimestamp"
-                  ></timeago>
-                </td>
-                <td class="border px-4 py-2" :title="transaction.sender">
-                  <a
-                    class="text-blue-500 underline"
-                    :href="
-                      `https://explorer.ark.io/wallets/${transaction.sender}`
-                    "
-                    :title="transaction.sender"
-                    target="_blank"
-                    >{{ transaction.humanizedSender }}</a
-                  >
-                </td>
-                <td class="border px-4 py-2" :title="transaction.recipient">
-                  <a
-                    class="text-blue-500 underline"
-                    :href="
-                      `https://explorer.ark.io/wallets/${transaction.recipient}`
-                    "
-                    :title="transaction.recipient"
-                    target="_blank"
-                    >{{ transaction.humanizedRecipient }}</a
-                  >
-                </td>
-                <td class="border px-4 py-2">{{ transaction.amount }}</td>
-                <td class="border px-4 py-2">{{ transaction.fee }}</td>
-                <td class="border px-4 py-2">
-                  {{ transaction.confirmations }}
-                </td>
-              </tr>
-            </tbody>
-          </table>
+        <div v-if="!this.isLoading">
+          <h2 class="text-gray-800 text-xl my-3 font-extrabold">
+            Recent transactions
+          </h2>
+
+          <div
+            class="text-gray-500 text-md bg-white rounded-lg shadow-md overflow-x-auto md:overflow-hidden mb-2"
+          >
+            <table class="table-auto w-full">
+              <thead>
+                <tr>
+                  <th class="text-gray-400 font-semibold px-4 py-4">ID</th>
+                  <th class="text-gray-400 font-semibold px-4 py-4">
+                    Timestamp
+                  </th>
+                  <th class="text-gray-400 font-semibold px-4 py-4">Sender</th>
+                  <th class="text-gray-400 font-semibold px-4 py-4">
+                    Recipient
+                  </th>
+                  <th class="text-gray-400 font-semibold px-4 py-4">Amount</th>
+                  <th class="text-gray-400 font-semibold px-4 py-4">Fee</th>
+                  <th class="text-gray-400 font-semibold px-4 py-4">
+                    Confirmations
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                  v-bind:key="transaction.id"
+                  v-for="transaction in formattedTransactions"
+                >
+                  <td class="border px-4 py-2">
+                    <a
+                      class="text-blue-500 underline"
+                      :href="
+                        `https://explorer.ark.io/transaction/${transaction.id}`
+                      "
+                      :title="transaction.id"
+                      target="_blank"
+                      >{{ transaction.humanizedId }}</a
+                    >
+                  </td>
+                  <td class="border px-4 py-2">
+                    <timeago
+                      :title="transaction.timestamp.human"
+                      :datetime="transaction.humanizedTimestamp"
+                    ></timeago>
+                  </td>
+                  <td class="border px-4 py-2" :title="transaction.sender">
+                    <a
+                      class="text-blue-500 underline"
+                      :href="
+                        `https://explorer.ark.io/wallets/${transaction.sender}`
+                      "
+                      :title="transaction.sender"
+                      target="_blank"
+                      >{{ transaction.humanizedSender }}</a
+                    >
+                  </td>
+                  <td class="border px-4 py-2" :title="transaction.recipient">
+                    <a
+                      class="text-blue-500 underline"
+                      :href="
+                        `https://explorer.ark.io/wallets/${transaction.recipient}`
+                      "
+                      :title="transaction.recipient"
+                      target="_blank"
+                      >{{ transaction.humanizedRecipient }}</a
+                    >
+                  </td>
+                  <td class="border px-4 py-2">{{ transaction.amount }}</td>
+                  <td class="border px-4 py-2">{{ transaction.fee }}</td>
+                  <td class="border px-4 py-2">
+                    {{ transaction.confirmations }}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
@@ -110,8 +122,9 @@
 import Vue from "vue";
 import Navbar from "@/components/Navbar.vue";
 import Back from "@/components/icons/Back.vue";
+import Loader from "@/components/Loader.vue";
 import WalletService from "@/services/WalletService";
-import { IWallet, ITransaction } from "@/interfaces";
+import { IWallet, ITransaction, IDelegate } from "@/interfaces";
 import {
   isWalletAddress,
   isPublicKey,
@@ -123,18 +136,24 @@ import { getAddress } from "@/services/CryptoService";
 import ArkService from "@/services/ArkService";
 
 export default Vue.extend({
-  components: { Navbar, Back },
+  components: { Navbar, Back, Loader },
   mounted: async function() {
     const walletId = this.$route.params.wallet;
+
     const [wallet, transactions] = await Promise.all([
       ArkService.getWallet(walletId),
       ArkService.getTransactions(walletId)
     ]);
+
+    this.delegates = await ArkService.getAllDelegates();
     this.wallet = wallet.data.data;
     this.transactions = transactions.data.data;
+    this.isLoading = false;
   },
   data: () => ({
+    isLoading: true,
     transactions: [] as ITransaction[],
+    delegates: [] as IDelegate[],
     wallet: {
       balance: "0",
       isDelegate: false,
@@ -144,6 +163,10 @@ export default Vue.extend({
   computed: {
     readableBalance() {
       return readableCrypto(this.wallet.balance);
+    },
+    delegate() {
+      const vote = getAddress(this.wallet.vote);
+      return this.delegates.find(v => v.address === vote);
     },
     formattedTransactions() {
       const response = this.transactions.map(transaction => ({
@@ -159,7 +182,6 @@ export default Vue.extend({
             ? "Well confirmed"
             : transaction.confirmations
       }));
-      console.log("response", response);
       return response;
     }
   }

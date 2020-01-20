@@ -31,11 +31,6 @@ const routes = [
     component: ExploreWallet
   },
   {
-    path: "/explore/wallet/:wallet/voters",
-    name: "exploreWalletVoters",
-    component: ExploreWalletVoters
-  },
-  {
     path: "/explore/delegates",
     name: "exploreDelegates",
     component: ExploreDelegates
