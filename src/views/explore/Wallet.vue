@@ -3,10 +3,15 @@
     <Navbar />
     <div id="page" class="flex flex-1 p-3">
       <div class="container mx-auto">
-        <h2 class="text-gray-800 text-3xl my-3 font-extrabold flex items-center">
-          <router-link class="text-gray-500 rounded mr-2 inline-block" to="/explore">
-            <Back />
-          </router-link>Wallet Summary
+        <h2
+          class="text-gray-800 text-3xl my-3 font-extrabold flex items-center"
+        >
+          <router-link
+            class="text-gray-500 rounded mr-2 inline-block"
+            to="/explore"
+          >
+            <Back /> </router-link
+          >Wallet Summary
         </h2>
 
         <section
@@ -27,7 +32,9 @@
         </section>
 
         <div>
-          <h2 class="text-gray-800 text-xl my-3 font-extrabold">All transactions</h2>
+          <h2 class="text-gray-800 text-xl my-3 font-extrabold">
+            All transactions
+          </h2>
 
           <div
             class="text-gray-500 text-md bg-white rounded-lg shadow-md overflow-x-auto md:overflow-hidden"
@@ -36,16 +43,25 @@
               <thead>
                 <tr>
                   <th class="text-gray-400 font-semibold px-4 py-4">ID</th>
-                  <th class="text-gray-400 font-semibold px-4 py-4">Timestamp</th>
+                  <th class="text-gray-400 font-semibold px-4 py-4">
+                    Timestamp
+                  </th>
                   <th class="text-gray-400 font-semibold px-4 py-4">Sender</th>
-                  <th class="text-gray-400 font-semibold px-4 py-4">Recipient</th>
+                  <th class="text-gray-400 font-semibold px-4 py-4">
+                    Recipient
+                  </th>
                   <th class="text-gray-400 font-semibold px-4 py-4">Amount</th>
                   <th class="text-gray-400 font-semibold px-4 py-4">Fee</th>
-                  <th class="text-gray-400 font-semibold px-4 py-4">Confirmations</th>
+                  <th class="text-gray-400 font-semibold px-4 py-4">
+                    Confirmations
+                  </th>
                 </tr>
               </thead>
               <tbody>
-                <tr v-bind:key="transaction.id" v-for="transaction in formattedTransactions">
+                <tr
+                  v-bind:key="transaction.id"
+                  v-for="transaction in formattedTransactions"
+                >
                   <td class="border px-4 py-2">
                     <a
                       class="text-blue-500 underline"
@@ -54,7 +70,8 @@
                       "
                       :title="transaction.id"
                       target="_blank"
-                    >{{ transaction.humanizedId }}</a>
+                      >{{ transaction.humanizedId }}</a
+                    >
                   </td>
                   <td class="border px-4 py-2">
                     <timeago
@@ -70,7 +87,8 @@
                       "
                       :title="transaction.sender"
                       target="_blank"
-                    >{{ transaction.humanizedSender }}</a>
+                      >{{ transaction.humanizedSender }}</a
+                    >
                   </td>
                   <td class="border px-4 py-2" :title="transaction.recipient">
                     <a
@@ -80,11 +98,14 @@
                       "
                       :title="transaction.recipient"
                       target="_blank"
-                    >{{ transaction.humanizedRecipient }}</a>
+                      >{{ transaction.humanizedRecipient }}</a
+                    >
                   </td>
                   <td class="border px-4 py-2">{{ transaction.amount }}</td>
                   <td class="border px-4 py-2">{{ transaction.fee }}</td>
-                  <td class="border px-4 py-2">{{ transaction.confirmations }}</td>
+                  <td class="border px-4 py-2">
+                    {{ transaction.confirmations }}
+                  </td>
                 </tr>
               </tbody>
             </table>
