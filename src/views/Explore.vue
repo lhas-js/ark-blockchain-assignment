@@ -31,34 +31,36 @@
 
 <script lang="ts">
 import Vue from "vue";
-import Navbar from "../components/Navbar.vue";
-import WalletService from "../services/WalletService";
+import Component from "vue-class-component";
+import Navbar from "@/components/Navbar.vue";
+import WalletService from "@/services/WalletService";
 import { IWallet } from "@/interfaces";
 import { isWalletAddress, isPublicKey } from "@/utils";
-import { getAddress } from "../services/CryptoService";
+import { getAddress } from "@/services/CryptoService";
 
-export default Vue.extend({
-  components: { Navbar },
-  data: () => ({
-    searchTerm: ""
-  }),
-  methods: {
-    onSubmit() {
-      const searchTerm = this.searchTerm.trim();
-      const isValid =
-        searchTerm.length > 0 &&
-        (isWalletAddress(searchTerm) || isPublicKey(searchTerm));
+const ExploreProps = Vue.extend();
 
-      if (!isValid) {
-        return;
-      }
+@Component({
+  components: { Navbar }
+})
+export default class Explore extends ExploreProps {
+  searchTerm: string = "";
 
-      const wallet = isPublicKey(searchTerm)
-        ? getAddress(searchTerm)
-        : searchTerm;
+  onSubmit() {
+    const searchTerm = this.searchTerm.trim();
+    const isValid =
+      searchTerm.length > 0 &&
+      (isWalletAddress(searchTerm) || isPublicKey(searchTerm));
 
-      this.$router.push({ name: "exploreWallet", params: { wallet } });
+    if (!isValid) {
+      return;
     }
+
+    const wallet = isPublicKey(searchTerm)
+      ? getAddress(searchTerm)
+      : searchTerm;
+
+    this.$router.push({ name: "exploreWallet", params: { wallet } });
   }
-});
+}
 </script>
