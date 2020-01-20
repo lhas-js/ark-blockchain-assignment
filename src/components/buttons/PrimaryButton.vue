@@ -7,8 +7,10 @@
   ></router-link>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import Vue from "vue";
+
+const PrimaryButtonProps = Vue.extend({
   props: {
     component: {
       type: String,
@@ -18,5 +20,7 @@ export default {
       type: String
     }
   }
-};
+});
+
+export default class PrimaryButton extends PrimaryButtonProps {}
 </script>

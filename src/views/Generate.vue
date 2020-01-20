@@ -7,21 +7,13 @@
         <Loader />
       </div>
       <div v-else class="container mx-auto">
-        <h2 class="text-gray-800 text-3xl mt-4 mb-4 font-extrabold">
-          Wallet generated 👏
-        </h2>
+        <h2 class="text-gray-800 text-3xl mt-4 mb-4 font-extrabold">Wallet generated 👏</h2>
         <div
           class="text-left max-w-4xl mx-auto mb-4 p-6 bg-white rounded-lg shadow-xl overflow-hidden"
         >
           <h2 class="text-gray-800 text-xl font-semibold">Address</h2>
-          <input
-            class="text-field mt-2 w-full"
-            disabled
-            :value="metadata.address"
-          />
-          <h2 class="text-gray-800 text-xl mt-3 mb-2 font-semibold">
-            Passphrase
-          </h2>
+          <input class="text-field mt-2 w-full" disabled :value="metadata.address" />
+          <h2 class="text-gray-800 text-xl mt-3 mb-2 font-semibold">Passphrase</h2>
 
           <div class="flex flex-wrap -mx-2">
             <div
@@ -45,14 +37,12 @@
         <router-link
           class="text-gray-500 hover:text-gray-600 text-sm underline inline-block p-2 mb-6"
           to="/explore/delegates"
-          >Delegate Monitor</router-link
-        >
+        >Delegate Monitor</router-link>
         <span>|</span>
         <router-link
           class="text-gray-500 hover:text-gray-600 text-sm underline mt-4 rounded inline-block p-2 mb-6"
           to="/"
-          >Back to Home</router-link
-        >
+        >Back to Home</router-link>
       </div>
     </div>
   </main>
@@ -60,13 +50,27 @@
 
 <script lang="ts">
 import Vue from "vue";
-import Navbar from "../components/Navbar.vue";
-import Loader from "../components/Loader.vue";
-import WalletService from "../services/WalletService";
+import Component from "vue-class-component";
+import Navbar from "@/components/Navbar.vue";
+import Loader from "@/components/Loader.vue";
+import WalletService from "@/services/WalletService";
 import { IWallet } from "@/interfaces";
 
-export default Vue.extend({
-  components: { Navbar, Loader },
+const GenerateProps = Vue.extend();
+
+@Component({
+  components: { Navbar, Loader }
+})
+export default class Generate extends GenerateProps {
+  isLoading = true;
+  metadata = {
+    address: "",
+    passphrase: "",
+    entropy: "",
+    publicKey: "",
+    wif: ""
+  };
+
   mounted() {
     const onSuccess = (wallet: IWallet) => {
       this.isLoading = false;
@@ -74,18 +78,6 @@ export default Vue.extend({
     };
 
     WalletService.generate(onSuccess);
-  },
-  data: () => ({
-    isLoading: true,
-    metadata: {
-      address: "AQXtnzu3HBBhGhCgnKzTTTgoVfJpgrcuK3",
-      passphrase:
-        "scorpion mouse rude habit lady blur baby lend robot ask lucky gold",
-      entropy: "4eb03dc682efe1f0cd26e774d89d615e",
-      publicKey:
-        "02d302117e1fb88fa5b187969c8612d1e87ec2d409a330685f39ee46f18e5a16ef",
-      wif: "SD5JC9c6riBewYgQWMvAceyTd9P1hxgJZfVemtt4xcRQycPjrWBa"
-    }
-  })
-});
+  }
+}
 </script>
