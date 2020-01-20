@@ -4,12 +4,9 @@
     <div id="page" class="flex flex-1">
       <div class="container mx-auto">
         <h2 class="text-gray-800 text-2xl my-2 font-extrabold">
-          <router-link
-            class="text-gray-500 rounded mr-2 inline-block"
-            to="/explore"
-          >
-            <Back /> </router-link
-          >Delegate Monitor
+          <router-link class="text-gray-500 rounded mr-2 inline-block" to="/explore">
+            <Back />
+          </router-link>Delegate Monitor
         </h2>
 
         <Loader v-if="this.isLoading" />
@@ -26,10 +23,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr
-                v-bind:key="delegate.id"
-                v-for="(delegate, index) in formattedDelegates"
-              >
+              <tr v-bind:key="delegate.id" v-for="(delegate, index) in formattedDelegates">
                 <td class="border px-4 py-2">{{ index + 1 }}</td>
                 <td class="border px-4 py-2">{{ delegate.username }}</td>
                 <td class="border px-4 py-2">{{ delegate.humanizedVotes }}</td>
@@ -38,13 +32,7 @@
           </table>
         </div>
 
-        <button
-          v-if="this.hasLoadMore"
-          v-on:click="loadMore"
-          class="mx-auto block my-4 p-3 text-gray-500 hover:text-gray-600 border rounded border-gray-500 hover:border-gray-600"
-        >
-          Load More
-        </button>
+        <LoadMore v-if="this.hasLoadMore" :onClick="loadMore" />
       </div>
     </div>
   </main>
@@ -55,6 +43,7 @@ import Vue from "vue";
 import Loader from "@/components/Loader.vue";
 import Navbar from "@/components/Navbar.vue";
 import Back from "@/components/icons/Back.vue";
+import LoadMore from "@/components/buttons/LoadMore.vue";
 import WalletService from "@/services/WalletService";
 import { IWallet, IDelegate } from "@/interfaces";
 import { isWalletAddress, isPublicKey, readableCrypto } from "@/utils";
@@ -62,9 +51,8 @@ import { getAddress } from "@/services/CryptoService";
 import ArkService from "../../services/ArkService";
 
 export default Vue.extend({
-  components: { Navbar, Back, Loader },
+  components: { Navbar, Back, Loader, LoadMore },
   data: () => ({
-    page: 1,
     isLoading: true,
     delegates: [] as IDelegate[],
     pagination: {
@@ -84,10 +72,14 @@ export default Vue.extend({
       this.isLoading = true;
 
       const el = document.querySelector("#page");
-      const request = await ArkService.getDelegates(this.pagination.page + 1);
+      const nextPage = this.pagination.page + 1;
+      const request = await ArkService.getDelegates(nextPage);
 
       this.delegates = [...this.delegates, ...request.data.data];
-      this.pagination.total = request.data.meta.pageCount;
+      this.pagination = {
+        page: nextPage,
+        total: request.data.meta.pageCount
+      };
       this.isLoading = false;
 
       if (!el) {
