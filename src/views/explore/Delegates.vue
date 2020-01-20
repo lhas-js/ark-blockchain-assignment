@@ -32,7 +32,7 @@
 
         <Loader v-if="this.isLoading" />
 
-        <LoadMore v-if="this.hasLoadMore" :onClick="loadMore" />
+        <LoadMoreButton v-if="this.hasLoadMore" :onClick="loadMore" />
       </div>
     </div>
   </main>
@@ -43,18 +43,18 @@ import Vue from "vue";
 import Loader from "@/components/Loader.vue";
 import Navbar from "@/components/Navbar.vue";
 import Back from "@/components/icons/Back.vue";
-import LoadMore from "@/components/buttons/LoadMore.vue";
+import { LoadMoreButton } from "@/components/buttons";
 import WalletService from "@/services/WalletService";
 import { IWallet, IDelegate } from "@/interfaces";
 import { isWalletAddress, isPublicKey, readableCrypto } from "@/utils";
 import { getAddress } from "@/services/CryptoService";
-import ArkService from "../../services/ArkService";
+import ArkService from "@/services/ArkService";
 import Component from "vue-class-component";
 
 const DelegatesProps = Vue.extend();
 
 @Component({
-  components: { Navbar, Back, Loader, LoadMore }
+  components: { Navbar, Back, Loader, LoadMoreButton }
 })
 export default class Delegates extends DelegatesProps {
   isLoading = true;

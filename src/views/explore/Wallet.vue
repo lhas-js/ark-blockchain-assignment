@@ -91,7 +91,7 @@
           </div>
 
           <Loader v-if="this.isLoading" />
-          <LoadMore v-if="this.hasLoadMore" :onClick="loadMore" />
+          <LoadMoreButton v-if="this.hasLoadMore" :onClick="loadMore" />
         </div>
       </div>
     </div>
@@ -103,7 +103,7 @@ import Vue from "vue";
 import Navbar from "@/components/Navbar.vue";
 import Back from "@/components/icons/Back.vue";
 import Loader from "@/components/Loader.vue";
-import LoadMore from "@/components/buttons/LoadMore.vue";
+import { LoadMoreButton } from "@/components/buttons";
 import WalletService from "@/services/WalletService";
 import { IWallet, ITransaction, IDelegate } from "@/interfaces";
 import {
@@ -121,7 +121,7 @@ import Component from "vue-class-component";
 const WalletProps = Vue.extend();
 
 @Component({
-  components: { Navbar, Back, Loader, LoadMore }
+  components: { Navbar, Back, Loader, LoadMoreButton }
 })
 export default class Wallet extends WalletProps {
   isLoading = true;
