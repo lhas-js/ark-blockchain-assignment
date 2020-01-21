@@ -4,7 +4,10 @@ import LoadMoreButton from "@/components/buttons/LoadMoreButton.vue";
 describe("LoadMoreButton.vue", () => {
   it("renders correctly", () => {
     const wrapper = shallowMount(LoadMoreButton, {
-      stubs: ["router-link", "router-view"]
+      stubs: ["router-link", "router-view"],
+      propsData: {
+        onClick() {}
+      }
     });
     expect(wrapper).toMatchSnapshot();
   });
