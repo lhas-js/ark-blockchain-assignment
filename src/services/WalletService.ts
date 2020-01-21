@@ -1,12 +1,13 @@
 import { Generator } from "more-entropy";
 import { randomBytes } from "crypto";
-import { walletFromEntropy } from "./CryptoService";
+import { walletFromEntropy } from "paper-wallet/src/crypto";
 
 class WalletService {
   generate = (onSuccess: any) => {
     new Generator().generate(2048, (values: any) => {
       const entropy = values.concat(Array.from(randomBytes(256)));
       const wallet = walletFromEntropy(this.shuffle(entropy).slice(0, 16));
+
       onSuccess(wallet);
     });
   };
