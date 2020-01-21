@@ -4,9 +4,12 @@
     <div id="page" class="flex flex-1">
       <div class="container mx-auto">
         <h2 class="text-gray-800 text-2xl my-2 font-extrabold">
-          <router-link class="text-gray-500 rounded mr-2 inline-block" to="/explore">
-            <Back />
-          </router-link>Delegate Monitor
+          <router-link
+            class="text-gray-500 rounded mr-2 inline-block"
+            to="/explore"
+          >
+            <Back /> </router-link
+          >Delegate Monitor
         </h2>
 
         <div
@@ -21,7 +24,10 @@
               </tr>
             </thead>
             <tbody>
-              <tr v-bind:key="delegate.id" v-for="(delegate, index) in formattedDelegates">
+              <tr
+                v-bind:key="delegate.id"
+                v-for="(delegate, index) in formattedDelegates"
+              >
                 <td class="border px-4 py-2">{{ index + 1 }}</td>
                 <td class="border px-4 py-2">{{ delegate.username }}</td>
                 <td class="border px-4 py-2">{{ delegate.humanizedVotes }}</td>

@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PrimaryButton.vue renders correctly 1`] = `<router-link-stub class="primary-button"></router-link-stub>`;
