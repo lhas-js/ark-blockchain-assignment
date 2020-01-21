@@ -36,23 +36,21 @@
             All transactions
           </h2>
 
-          <div
-            class="text-gray-500 text-md bg-white rounded-lg shadow-md overflow-x-auto md:overflow-hidden"
-          >
-            <table class="table-auto w-full">
+          <div class="table-wrapper">
+            <table>
               <thead>
                 <tr>
-                  <th class="text-gray-400 font-semibold px-4 py-4">ID</th>
-                  <th class="text-gray-400 font-semibold px-4 py-4">
+                  <th>ID</th>
+                  <th>
                     Timestamp
                   </th>
-                  <th class="text-gray-400 font-semibold px-4 py-4">Sender</th>
-                  <th class="text-gray-400 font-semibold px-4 py-4">
+                  <th>Sender</th>
+                  <th>
                     Recipient
                   </th>
-                  <th class="text-gray-400 font-semibold px-4 py-4">Amount</th>
-                  <th class="text-gray-400 font-semibold px-4 py-4">Fee</th>
-                  <th class="text-gray-400 font-semibold px-4 py-4">
+                  <th>Amount</th>
+                  <th>Fee</th>
+                  <th>
                     Confirmations
                   </th>
                 </tr>
@@ -62,9 +60,8 @@
                   v-bind:key="transaction.id"
                   v-for="transaction in formattedTransactions"
                 >
-                  <td class="border px-4 py-2">
+                  <td>
                     <a
-                      class="text-blue-500 underline"
                       :href="
                         `https://explorer.ark.io/transaction/${transaction.id}`
                       "
@@ -73,15 +70,14 @@
                       >{{ transaction.humanizedId }}</a
                     >
                   </td>
-                  <td class="border px-4 py-2">
+                  <td>
                     <timeago
                       :title="transaction.timestamp.human"
                       :datetime="transaction.humanizedTimestamp"
                     ></timeago>
                   </td>
-                  <td class="border px-4 py-2" :title="transaction.sender">
+                  <td :title="transaction.sender">
                     <a
-                      class="text-blue-500 underline"
                       :href="
                         `https://explorer.ark.io/wallets/${transaction.sender}`
                       "
@@ -90,9 +86,8 @@
                       >{{ transaction.humanizedSender }}</a
                     >
                   </td>
-                  <td class="border px-4 py-2" :title="transaction.recipient">
+                  <td :title="transaction.recipient">
                     <a
-                      class="text-blue-500 underline"
                       :href="
                         `https://explorer.ark.io/wallets/${transaction.recipient}`
                       "
@@ -101,9 +96,9 @@
                       >{{ transaction.humanizedRecipient }}</a
                     >
                   </td>
-                  <td class="border px-4 py-2">{{ transaction.amount }}</td>
-                  <td class="border px-4 py-2">{{ transaction.fee }}</td>
-                  <td class="border px-4 py-2">
+                  <td>{{ transaction.amount }}</td>
+                  <td>{{ transaction.fee }}</td>
+                  <td>
                     {{ transaction.confirmations }}
                   </td>
                 </tr>

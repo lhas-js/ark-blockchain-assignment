@@ -17,6 +17,7 @@
     "core-js": "^3.4.4",
     "lodash": "^4.17.15",
     "more-entropy": "^0.0.7",
+    "postcss-import": "^12.0.1",
     "ripemd160": "^2.0.2",
     "secp256k1": "^4.0.0",
     "simple-sha256": "^1.0.0",
