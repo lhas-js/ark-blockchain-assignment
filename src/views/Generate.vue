@@ -7,13 +7,21 @@
         <Loader />
       </div>
       <div v-else class="container mx-auto">
-        <h2 class="text-gray-800 text-3xl mt-4 mb-4 font-extrabold">Wallet generated 👏</h2>
+        <h2 class="text-gray-800 text-3xl mt-4 mb-4 font-extrabold">
+          Wallet generated 👏
+        </h2>
         <div
           class="text-left max-w-4xl mx-auto mb-4 p-6 bg-white rounded-lg shadow-xl overflow-hidden"
         >
           <h2 class="text-gray-800 text-xl font-semibold">Address</h2>
-          <input class="text-field mt-2 w-full" disabled :value="metadata.address" />
-          <h2 class="text-gray-800 text-xl mt-3 mb-2 font-semibold">Passphrase</h2>
+          <input
+            class="text-field mt-2 w-full"
+            disabled
+            :value="metadata.address"
+          />
+          <h2 class="text-gray-800 text-xl mt-3 mb-2 font-semibold">
+            Passphrase
+          </h2>
 
           <div class="flex flex-wrap -mx-2">
             <div
@@ -37,12 +45,14 @@
         <router-link
           class="text-gray-500 hover:text-gray-600 text-sm underline inline-block p-2 mb-6"
           to="/explore/delegates"
-        >Delegate Monitor</router-link>
+          >Delegate Monitor</router-link
+        >
         <span>|</span>
         <router-link
           class="text-gray-500 hover:text-gray-600 text-sm underline mt-4 rounded inline-block p-2 mb-6"
           to="/"
-        >Back to Home</router-link>
+          >Back to Home</router-link
+        >
       </div>
     </div>
   </main>

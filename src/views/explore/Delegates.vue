@@ -4,27 +4,31 @@
     <div id="page" class="flex flex-1">
       <div class="container mx-auto">
         <h2 class="text-gray-800 text-2xl my-2 font-extrabold">
-          <router-link class="text-gray-500 rounded mr-2 inline-block" to="/explore">
-            <Back />
-          </router-link>Delegate Monitor
+          <router-link
+            class="text-gray-500 rounded mr-2 inline-block"
+            to="/explore"
+          >
+            <Back /> </router-link
+          >Delegate Monitor
         </h2>
 
-        <div
-          class="text-gray-500 text-md bg-white rounded-lg shadow-md overflow-x-auto md:overflow-hidden my-3"
-        >
-          <table class="table-auto w-full">
+        <div class="table-wrapper">
+          <table>
             <thead>
               <tr>
-                <th class="text-gray-400 font-semibold px-4 py-4">Rank</th>
-                <th class="text-gray-400 font-semibold px-4 py-4">Username</th>
-                <th class="text-gray-400 font-semibold px-4 py-4">Votes</th>
+                <th>Rank</th>
+                <th>Username</th>
+                <th>Votes</th>
               </tr>
             </thead>
             <tbody>
-              <tr v-bind:key="delegate.id" v-for="(delegate, index) in formattedDelegates">
-                <td class="border px-4 py-2">{{ index + 1 }}</td>
-                <td class="border px-4 py-2">{{ delegate.username }}</td>
-                <td class="border px-4 py-2">{{ delegate.humanizedVotes }}</td>
+              <tr
+                v-bind:key="delegate.id"
+                v-for="(delegate, index) in formattedDelegates"
+              >
+                <td>{{ index + 1 }}</td>
+                <td>{{ delegate.username }}</td>
+                <td>{{ delegate.humanizedVotes }}</td>
               </tr>
             </tbody>
           </table>

@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Navbar.vue renders correctly 1`] = `
+<nav class="flex items-center justify-center flex-wrap bg-red-600 p-5">
+  <div class="flex items-center flex-shrink-0 text-white mr-6"><img src="../assets/ark-logo.svg" class="logo">
+    <router-link-stub to="/" class="font-semibold text-xl tracking-tight pl-2">Paper Wallet</router-link-stub>
+  </div>
+</nav>
+`;

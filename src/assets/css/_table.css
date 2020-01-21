@@ -1,0 +1,25 @@
+.table-wrapper {
+  @apply text-gray-500 text-base bg-white rounded-lg shadow-md overflow-x-auto my-3;
+}
+
+.table-wrapper table {
+  @apply table-auto w-full;
+}
+
+.table-wrapper th {
+  @apply text-gray-400 font-semibold px-4 py-4;
+}
+
+.table-wrapper td {
+  @apply border px-4 py-2;
+}
+
+.table-wrapper td a {
+    @apply text-blue-500 underline;
+}
+
+@screen md {
+  .table-wrapper {
+    @apply overflow-hidden;
+  }
+}
